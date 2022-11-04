@@ -13,6 +13,7 @@ const App = () => {
                 <SearchPanel/>
                 <PostStatusFilter/>
             </div>
+            <PostList/>
         </div>
     )
 }
