@@ -37,7 +37,7 @@
   line-height: 35px;
   cursor: pointer;
   user-select: none;
-  transition: 0.5s all;
+  transition: 0.6s all;
 }
 
 .app-list-item.like .fa-heart {
