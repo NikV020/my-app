@@ -12,7 +12,7 @@ const PostAddForm = () => {
             />
             <button
                 type="submit"
-                className="btn btn-outline-secondary">
+                className="btn btn-info">
                  Добавить
             </button>
         </form>
