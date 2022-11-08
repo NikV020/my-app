@@ -15,7 +15,7 @@ const AppBlock = styled.div`
 
 export default class App extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             data : [
                 {label: 'Complete the study of React', important: true, like: false, id: 1},
