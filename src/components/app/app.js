@@ -18,13 +18,15 @@ export default class App extends Component {
         super(props)
         this.state = {
             data : [
-                {label: 'Complete the study of React', important: true, id: 'weqe'},
-                {label: 'Perform a test task', important: false, id: 'dfs'},
-                {label: 'Create React-miracles...', important: false, id: 'rhr'}
+                {label: 'Complete the study of React', important: true, id: 1},
+                {label: 'Perform a test task', important: false, id: 2},
+                {label: 'Create React-miracles...', important: false, id: 3}
             ]
         };
         this.deleteItem = this.deleteItem.bind(this);
         this.addItem = this.addItem.bind(this);
+
+        this.maxId = 4;
     }
 
     deleteItem(id) {
@@ -40,7 +42,17 @@ export default class App extends Component {
     }
 
     addItem(body) {
-        console.log(body);
+        const newItem = {
+            label: body,
+            important: false,
+            id: this.maxId++
+        }
+        this.setState(({data}) => {
+            const ultraArr = [...data, newItem];
+            return {
+                data: ultraArr
+            }
+        })
     }
 
     render() {
