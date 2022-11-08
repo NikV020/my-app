@@ -12,7 +12,7 @@ export default class SearchPanel extends Component {
     }
 
     onUpdateSearch(e) {
-        const term = e.targe.value;
+        const term = e.target.value;
         this.setState({term});
         this.props.onUpdateSearch(term);
     }
