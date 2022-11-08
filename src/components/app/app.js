@@ -18,9 +18,9 @@ export default class App extends Component {
         super(props)
         this.state = {
             data : [
-                {label: 'Complete the study of React', important: true, id: 1},
-                {label: 'Perform a test task', important: false, id: 2},
-                {label: 'Create React-miracles...', important: false, id: 3}
+                {label: 'Complete the study of React', important: true, like: false, id: 1},
+                {label: 'Perform a test task', important: false, like: false, id: 2},
+                {label: 'Create React-miracles...', important: false, like: false, id: 3}
             ]
         };
         this.deleteItem = this.deleteItem.bind(this);
@@ -50,9 +50,9 @@ export default class App extends Component {
             id: this.maxId++
         }
         this.setState(({data}) => {
-            const ultraArr = [...data, newItem];
+            const newArr = [...data, newItem];
             return {
-                data: ultraArr
+                data: newArr
             }
         })
     }
@@ -62,14 +62,33 @@ export default class App extends Component {
     }
 
     onToggleLiked(id) {
-        console.log(`Like ${id}`);
+        this.setState(({data}) => {
+            const index = data.findIndex(elem => elem.id === id);
+            
+            const old = data[index];
+            const newItem = {...old, like: !old.like}
+
+            const newArr = [...data.slice(0, index), newItem, ...data.slice(index + 1)];
+
+            return {
+                data: newArr
+            }
+        })
     }
 
 
     render() {
+        const {data} = this.state;
+        
+        const liked = data.filter(item => item.like).length;
+        const allPosts = data.length;
+
+
         return (
             <AppBlock>
-                <AppHeader/>
+                <AppHeader
+                liked={liked}
+                allPosts={allPosts}/>
                 <div className="search-panel d-flex">
                     <SearchPanel/>
                     <PostStatusFilter/>
