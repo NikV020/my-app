@@ -30,6 +30,7 @@ export default class App extends Component {
         this.onToggleImportant = this.onToggleImportant.bind(this);
         this.onToggleLiked = this.onToggleLiked.bind(this);
         this.onUpdateSearch = this.onUpdateSearch.bind(this);
+        this.onFilterSelect = this.onFilterSelect.bind(this);
 
         this.maxId = 4;
     }
@@ -112,6 +113,10 @@ export default class App extends Component {
         this.setState({term})
     }
 
+    onFilterSelect(filter) {
+        this.setState({filter})
+    }
+
     render() {
         const {data, term, filter} = this.state;
 
@@ -123,13 +128,14 @@ export default class App extends Component {
         return (
             <AppBlock>
                 <AppHeader
-                liked={liked}
-                allPosts={allPosts}/>
+                    liked={liked}
+                    allPosts={allPosts}/>
                 <div className="search-panel d-flex">
                     <SearchPanel
                         onUpdateSearch={this.onUpdateSearch}/>
                     <PostStatusFilter
-                    filter={filter}/>
+                        filter={filter}
+                        onFilterSelect={this.onFilterSelect}/>
                 </div>
                 <PostList 
                     posts={visiblePosts} 
@@ -137,7 +143,7 @@ export default class App extends Component {
                     onToggleImportant={this.onToggleImportant}
                     onToggleLiked={this.onToggleLiked}/>
                 <PostAddForm
-                onAdd={this.addItem}/>
+                    onAdd={this.addItem}/>
             </AppBlock>
         )
     }
