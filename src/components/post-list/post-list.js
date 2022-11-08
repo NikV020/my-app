@@ -6,7 +6,7 @@ import {ListGroup} from "reactstrap";
 
 import './post-list.css';
 
-const PostList = ({posts}) => {
+const PostList = ({posts, onDelete}) => {
 
     const elements = posts.map((item) => {
 
@@ -16,7 +16,7 @@ const PostList = ({posts}) => {
             <li key={id} className='list-group-item'>
                 <PostListItem 
                     {...itemProps}
-                    onDelete={() => console.log('Delete')}/>
+                    onDelete={() => onDelete(id)}/>
             </li>
         )
     });
