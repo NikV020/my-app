@@ -18,7 +18,7 @@ export default class App extends Component {
         super(props);
         this.state = {
             data : [
-                {label: 'Complete the study of React', important: true, like: false, id: 1},
+                {label: 'Complete the study of React', important: false, like: false, id: 1},
                 {label: 'Perform a test task', important: false, like: false, id: 2},
                 {label: 'Create React-miracles...', important: false, like: false, id: 3}
             ],
